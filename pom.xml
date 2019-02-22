@@ -4,22 +4,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.vin.datamall</groupId>
-    <artifactId>datamall</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>common</module>
-        <module>logger</module>
-        <module>mocker</module>
-    </modules>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.19.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <groupId>org.vin.datamall</groupId>
+    <artifactId>datamall</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>common</module>
+        <module>mocker</module>
+        <module>loggers</module>
+    </modules>
+
+
 
     <properties>
         <spark.version>2.1.1</spark.version>
