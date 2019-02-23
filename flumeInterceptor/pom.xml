@@ -12,10 +12,13 @@
     <artifactId>flumeInterceptor</artifactId>
 
     <dependencies>
+        <!-- flume核心依赖 -->
         <dependency>
-            <groupId>org.apache.flume.core</groupId>
-            <artifactId></artifactId>
+            <groupId>org.apache.flume</groupId>
+            <artifactId>flume-ng-core</artifactId>
+            <version>1.7.0</version>
         </dependency>
+
     </dependencies>
 
 
