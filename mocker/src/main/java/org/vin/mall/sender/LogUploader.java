@@ -8,11 +8,13 @@ import java.net.URL;
 public class LogUploader {
 
 
+	private static final String ADDRESS = "http://logserver/log";
+
 	public static void sendLogStream(String log) {
 		try {
 			//不同的日志类型对应不同的URL
 
-			URL url = new URL("http://logserver/log");
+			URL url = new URL(ADDRESS);
 
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			//设置请求方式为post

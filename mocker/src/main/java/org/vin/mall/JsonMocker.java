@@ -1,7 +1,6 @@
 package org.vin.mall;
 
 
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.vin.mall.sender.LogUploader;
@@ -16,13 +15,17 @@ import java.util.Date;
 import java.util.Random;
 
 
-
 public class JsonMocker {
 
 	int startupNum = 100000;
 	int eventNum = 200000;
+	String appId = "datamall";
 
 	RandomDate logDateUtil = null;
+
+	public JsonMocker() {
+
+	}
 
 
 	RanOpt[] osOpts = {new RanOpt("ios", 3), new RanOpt("andriod", 7)};
@@ -37,7 +40,6 @@ public class JsonMocker {
 	};
 	RandomOptionGroup<String> areaOptionGroup = new RandomOptionGroup(areaOpts);
 
-	String appId = "gmall0901";
 
 	RanOpt[] vsOpts = {new RanOpt("1.2.0", 50), new RanOpt("1.1.2", 15),
 			new RanOpt("1.1.3", 30),
@@ -59,13 +61,11 @@ public class JsonMocker {
 
 	RandomOptionGroup<String> channelOptionGroup = new RandomOptionGroup(channelOpts);
 
-	RanOpt[] quitOpts = {new RanOpt(true, 20), new RanOpt(false, 80)};
+	RanOpt[] quitOpts = {new RanOpt(true, 50), new RanOpt(false, 60)};
 
 	RandomOptionGroup<Boolean> isQuitGroup = new RandomOptionGroup(quitOpts);
 
-	public JsonMocker() {
 
-	}
 
 	public JsonMocker(String startTimeString, String endTimeString, int startupNum, int eventNum) {
 		try {
@@ -79,40 +79,31 @@ public class JsonMocker {
 
 	String initEventLog(String startLogJson) {
             /*`type` string   COMMENT '日志类型',
-             `mid` string COMMENT '设备唯一 表示',
-            `uid` string COMMENT '用户标识',
-            `os` string COMMENT '操作系统',
-            `appid` string COMMENT '应用id',
-            `area` string COMMENT '地区' ,
-            `evid` string COMMENT '事件id',
-            `pgid` string COMMENT '当前页',
-            `npgid` string COMMENT '跳转页',
-            `itemid` string COMMENT '商品编号',
-            `ts` bigint COMMENT '时间',*/
+             `mid`   string   COMMENT '设备唯一 表示',
+            `uid`    string   COMMENT '用户标识',
+            `os`     string   COMMENT '操作系统',
+            `appid`  string   COMMENT '应用id',
+            `area`   string   COMMENT '地区' ,
+            `evid`   string   COMMENT '事件id',
+            `pgid`   string   COMMENT '当前页',
+            `npgid`  string   COMMENT '跳转页',
+            `itemid` string   COMMENT '商品编号',
+            `ts`     bigint   COMMENT '时间',*/
 
 		JSONObject startLog = JSON.parseObject(startLogJson);
-		String mid = startLog.getString("mid");
-		String uid = startLog.getString("uid");
-		String os = startLog.getString("os");
-		String appid = this.appId;
-		String area = startLog.getString("area");
-		String evid = eventOptionGroup.getRandomOpt().getValue();
-		int pgid = new Random().nextInt(50) + 1;
-		int npgid = new Random().nextInt(50) + 1;
-		int itemid = new Random().nextInt(50);
 		//  long ts= logDateUtil.getRandomDate().getTime();
 
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("type", "event");
-		jsonObject.put("mid", mid);
-		jsonObject.put("uid", uid);
-		jsonObject.put("os", os);
-		jsonObject.put("appid", appid);
-		jsonObject.put("area", area);
-		jsonObject.put("evid", evid);
-		jsonObject.put("pgid", pgid);
-		jsonObject.put("npgid", npgid);
-		jsonObject.put("itemid", itemid);
+		jsonObject.put("type",  "event");
+		jsonObject.put("mid",   startLog.getString("mid"));
+		jsonObject.put("uid",   startLog.getString("uid"));
+		jsonObject.put("os",    startLog.getString("os"));
+		jsonObject.put("appid", this.appId);
+		jsonObject.put("area",  startLog.getString("area"));
+		jsonObject.put("evid",  eventOptionGroup.getRandomOpt().getValue());
+		jsonObject.put("pgid",  new Random().nextInt(50) + 1);
+		jsonObject.put("npgid", new Random().nextInt(50) + 1);
+		jsonObject.put("itemid", new Random().nextInt(50));
 		return jsonObject.toJSONString();
 	}
 

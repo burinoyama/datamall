@@ -4,7 +4,8 @@ import java.util.Date;
 import java.util.Random;
 
 public class RandomDate {
-	Long logDateTime = 0L;//
+
+	Long logDateTime = 0L;
 	int maxTimeStep = 0;
 
 

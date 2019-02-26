@@ -8,22 +8,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-//import org.springframework.web.bind.annotation.PostMapping;
 
 @RestController
 public class LoggerController {
 
-	private static final  org.slf4j.Logger logger = LoggerFactory.getLogger(LoggerController.class) ;
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(LoggerController.class);
 
 	@PostMapping("log")
-	public  String  log(@RequestParam("log") String logJson){
+	public String log(@RequestParam("log") String logJson) {
 		System.out.println(logJson);
 		JSONObject jsonObject = JSON.parseObject(logJson);
-		jsonObject.put("ts",System.currentTimeMillis());
+		jsonObject.put("ts", System.currentTimeMillis());
 
 		logger.info(jsonObject.toJSONString());
 
-		return   "success";
+		return "success";
 	}
 
 }
