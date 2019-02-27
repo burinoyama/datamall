@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Calendar;
+
 
 @RestController
 public class LoggerController {
@@ -18,7 +20,12 @@ public class LoggerController {
 	public String log(@RequestParam("log") String logJson) {
 		System.out.println(logJson);
 		JSONObject jsonObject = JSON.parseObject(logJson);
-		jsonObject.put("ts", System.currentTimeMillis());
+
+		Calendar today = Calendar.getInstance();
+
+//		yesterday.add(Calendar.DATE ,-1);
+
+		jsonObject.put("ts", today.getTimeInMillis());
 
 		logger.info(jsonObject.toJSONString());
 
