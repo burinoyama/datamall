@@ -8,7 +8,7 @@ import java.net.URL;
 public class LogUploader {
 
 
-	private static final String ADDRESS = "http://logserver/log";
+	private static final String ADDRESS = "http://localhost:8080/log";
 
 	public static void sendLogStream(String log) {
 		try {

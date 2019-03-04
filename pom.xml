@@ -20,6 +20,7 @@
         <module>mocker</module>
         <module>loggers</module>
         <module>flumeInterceptor</module>
+        <module>realtime</module>
     </modules>
 
 
