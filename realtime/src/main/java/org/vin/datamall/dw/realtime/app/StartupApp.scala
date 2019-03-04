@@ -30,6 +30,10 @@ object StartupApp {
 
     val startUpStream: InputDStream[ConsumerRecord[String, String]] = MyKafkaUtil.getKafkaStream(Constants.KAFKA_TOPIC_STARTUP, ssc)
 
+    startUpStream.map(_.value()).foreachRDD{rdd =>
+      println(rdd.collect() mkString ("\n"))
+    }
+
     val completeLogObject: DStream[StartupLog] = startUpStream.map(_.value()).map { log =>
       val startup: StartupLog = JSON.parseObject(log, classOf[StartupLog])
       val dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
@@ -84,9 +88,10 @@ object StartupApp {
         MyEsUtil.insertBulk(Constants.ES_INDEX_DAU, list.toList)
 
       }
-      ssc.start()
-      ssc.awaitTermination()
+
     }
+    ssc.start()
+    ssc.awaitTermination()
   }
 
 
