@@ -1,0 +1,14 @@
+
+message:一次canal从日志中抓取的信息，一个message包含多个sql。
+
+entry：相当于一个sql命令，一个sql可能会对多个行记录造成影响。
+
+rowchange：entry 经过反序列化得到的对象，包含了多行的变化值。
+
+rowDatas: 一个rowchange里包含的数据变化集，其中每一个rowdata里面包含了一个行的多个字段
+
+column：一个rowData里包含了多个column，每个column包含了name和value
+
+2:48 canal每次是增量还是全量读取数据？
+
+父路径没有权限，子路径有权限，能否操作子路径中的文件

@@ -3,7 +3,7 @@ package org.vin.loggers.service;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.vin.Constants;
+import org.vin.datamall.dw.common.constant.Constants;
 
 @org.springframework.stereotype.Service
 public class Service {

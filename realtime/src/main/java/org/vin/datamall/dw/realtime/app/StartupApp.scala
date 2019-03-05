@@ -11,7 +11,7 @@ import org.apache.spark.rdd.RDD
 import org.apache.spark.streaming.dstream.{DStream, InputDStream}
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.{SparkConf, SparkContext, rdd}
-import org.vin.Constants
+import org.vin.datamall.dw.common.constant.Constants
 import org.vin.datamall.dw.common.util.MyEsUtil
 import org.vin.datamall.dw.realtime.bean.StartupLog
 import org.vin.datamall.dw.realtime.util.{MyKafkaUtil, RedisUtil}
