@@ -24,6 +24,7 @@
         <module>realtime</module>
         <module>canal</module>
         <module>publisher</module>
+        <module>chart</module>
     </modules>
 
 

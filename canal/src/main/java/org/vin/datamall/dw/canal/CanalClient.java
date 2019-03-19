@@ -8,6 +8,7 @@ import com.alibaba.otter.canal.protocol.CanalEntry;
 import com.alibaba.otter.canal.protocol.Message;
 import com.google.protobuf.InvalidProtocolBufferException;
 import org.vin.datamall.dw.common.constant.Constants;
+import org.vin.datamall.dw.common.util.MyKafkaSender;
 
 import java.net.InetSocketAddress;
 import java.util.List;
@@ -70,7 +71,7 @@ public class CanalClient {
 
 					jsonObject.put(columnNameCamel, columnValueCamel);
 					System.err.println(jsonObject.toJSONString());
-
+					MyKafkaSender.send(Constants.ES_INDEX_NEW_ORDER, jsonObject.toJSONString());
 				}
 
 			}
